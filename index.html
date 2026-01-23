@@ -149,11 +149,31 @@
 <label class="block text-[10px] uppercase font-bold text-primary mb-1">Email Address</label>
 <input class="w-full bg-transparent border-none focus:ring-0 p-0 text-midnight dark:text-white placeholder:text-midnight/30 text-base font-body" id="email-input" placeholder="hello@example.com" type="email" name="email"/>
 </div>
+        <div class="flex items-start mb-6">
+  <div class="flex items-center h-5">
+    <input 
+      id="consent-checkbox" 
+      type="checkbox" 
+      required
+      class="w-4 h-4 text-[#FF6B8A] bg-white border-gray-300 rounded focus:ring-[#FF6B8A] cursor-pointer transition-colors"
+    >
+  </div>
+  <div class="ml-3 text-sm">
+    <label for="consent-checkbox" class="font-medium text-gray-700">
+      I agree to receive early access updates and news about Kalena Flow. 
+    </label>
+   
+  </div>
+</div>
 <button class="hero-gradient text-white px-8 py-4 rounded-xl font-bold hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-primary/30 w-full" id="submit-btn" type="submit">
                                 Join the Waitlist
         <div id="spinner" class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                             </button>
         <div id="feedback" class="hidden mt-4 p-4 rounded-xl text-sm font-medium"></div>
+         <p class="text-gray-500 mt-1">
+      By signing up, you agree to our 
+      <a href="/privacy-policy.html" class="text-[#FF6B8A] underline hover:text-[#FF9F80]">Privacy Policy</a>.
+    </p>
 </form>
 </div>
 <div class="flex items-center gap-4 text-sm text-midnight/50 dark:text-white/50 font-body">
