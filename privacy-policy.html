@@ -1,124 +1,333 @@
 <!DOCTYPE html>
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Kalena - Understand your rhythm, privately.</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#FF6B8A", // Rose Coral
-                        "peach": "#FF9F80", // Peach Glow
-                        "midnight": "#1E2A38",
-                        "background-light": "#FFF9F7", // Soft White
-                        "background-dark": "#230f13",
-                    },
-                    fontFamily: {
-                        "display": ["Manrope", "sans-serif"],
-                        "body": ["Roboto", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "1rem",
-                        "lg": "2rem",
-                        "xl": "3rem",
-                        "full": "9999px"
-                    },
-                },
-            },
-        }
-    </script>
-<style type="text/tailwindcss">
-        body {
-            font-family: 'Roboto', sans-serif;
-        }
-        h1 {
-            font-family: 'Manrope', sans-serif;
-        }
-        h2, h3, .font-display {
-            font-family: 'Manrope', sans-serif;
-            margin-top: 8px;
-        margin-bottom: 8px;
-        color: #1E2A38;
-        }
-        p{
-            margin-bottom: 16px;
-        color: #1E2A38;
-        }
-        .hero-gradient {
-            background: linear-gradient(135deg, #FF6B8A 0%, #FF9F80 100%);
-        }
-        .hero-bg-tint {
-            background: linear-gradient(135deg, rgba(255, 107, 138, 0.08) 0%, rgba(255, 159, 128, 0.08) 100%);
-        }
-    </style>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kalena Flow Privacy Policy — your data never leaves your device." />
+  <meta name="theme-color" content="#FF6B8A" />
+  <title>Privacy Policy — Kalena Flow</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'rose-coral':  '#FF6B8A',
+            'peach-glow':  '#FF9F80',
+            'soft-white':  '#FFF9F7',
+            'midnight':    '#1E2A38',
+            'light-pink':  '#FFE8EF',
+          },
+          fontFamily: {
+            manrope: ['Manrope', 'sans-serif'],
+            roboto:  ['Roboto', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #FFF9F7;
+      color: #1E2A38;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, .font-manrope { font-family: 'Manrope', sans-serif; }
+
+    #main-nav {
+      transition: box-shadow 0.2s ease, background 0.2s ease;
+    }
+    #main-nav.scrolled {
+      box-shadow: 0 2px 20px rgba(30, 42, 56, 0.08);
+      background: rgba(255, 249, 247, 0.97);
+    }
+
+    .btn-nav {
+      background: linear-gradient(135deg, #FF6B8A, #FF9F80);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 2px 10px rgba(255, 107, 138, 0.3);
+    }
+    .btn-nav:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(255, 107, 138, 0.4);
+    }
+
+    .policy-section {
+      border-left: 3px solid #FFE8EF;
+      padding-left: 1.5rem;
+    }
+    .policy-section:hover {
+      border-left-color: #FF6B8A;
+      transition: border-color 0.2s ease;
+    }
+  </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-midnight dark:text-white transition-colors duration-300">
-<header class="w-full border-b border-primary/10 px-6 py-4 lg:px-40 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
-<div class="max-w-[1200px] mx-auto flex items-center justify-between">
+<body class="bg-soft-white">
 
-<div class="flex items-center gap-2">
-<span class="text-4xl text-primary font-semibold font-display tracking-widest">kalena</span>
-</div>
-<nav class="hidden md:flex gap-8 items-center text-sm font-medium">
-<a class="hover:text-primary transition-colors" href="/privacy-policy.html">Privacy</a>
-</nav>
-</div>
-</header>
-<main class="flex flex-col">
-<section class="hero-bg-tint relative overflow-hidden">
-<div class="px-6 lg:px-40 py-16 lg:py-24 max-w-[1200px] mx-auto">
-<div class="items-center">
-<h1>Privacy Policy</h1>
-<h2>1. Introduction</h2>
-<p>Kalena Flow ("we," "our," or "us"), a company registered in Ireland as Kalena Flow Ltd, is committed to protecting your privacy. This Privacy Policy explains how we handle your information. Unlike most health apps, Kalena Flow is designed with a "Local-First" architecture, meaning your health data stays on your device and is never transmitted to our servers.
-</p>
-<h2>2. The "No Data Collection" Guarantee</h2>
-<p>Our core philosophy is that your health data is yours alone.</p>
-<p>Menstrual & Fertility Data: All logs, cycle dates, fertile window predictions, and notes are stored in a local SQLite database on your mobile device. We do not have access to this data.</p>
-<p>Personal Identity: We do not require you to create an account or provide an email address to use the core tracking features of the app.</p>
-<h2>3. Data We May Process</h2>
-<p>While your health data is private, certain non-sensitive data is processed for the app to function:</p>
-<p>In-App Purchases: When you purchase "Premium Features," the transaction is handled by Google Play Billing. We receive a confirmation of the purchase (a transaction ID) to unlock your features, but we do not see your credit card details or real name.</p>
-<p>Local Storage Permissions: The app requires permission to write to your device's local storage to save your cycle history.</p>
-<h2>4. Third-Party Services</h2>
-<p>To maintain your privacy, we strictly limit third-party integrations:</p>
-<p>Google Play Services: Used only for processing payments and app updates.</p>
-<p>No Analytics/Ads: We do not use third-party tracking (like Facebook SDK or Google Analytics) that monitors your behavior or shares your data with advertisers.</p>
-<h2>5. Security</h2>
-<p>Because your data is stored locally, its security depends on the security of your device. We recommend:</p>
-<p>Using a device passcode or biometric lock.</p>
-<p>Using the "Privacy Lock" feature within Kalena Flow settings.</p>
-<p>Note: If you delete the app or lose your phone, your data will be lost unless you have used the manual "Export" function to create a backup.</p>
-<h2>6. Your Rights (GDPR)</h2>
-<p>As an Irish-registered company, we comply with the GDPR. You have the right to:</p>
-<p>Access & Portability: You can use the "Export to JSON/CSV" feature in the app at any time to take your data with you.</p>
-<p>Erasure: You can delete all your health data instantly by using the "Clear All Data" button in Settings or by uninstalling the app.</p>
-<p>Contact: For any privacy-related questions, contact us at <a href="mailto:kalenaflow@gmail.com">kalenaflow@gmail.com</a></p>
-<h2>7. Medical Disclaimer</h2>
-<p>Kalena Flow is a tracking and informational tool. It is not a medical device and should not be used as a form of contraception or for the diagnosis of any medical condition. Always consult a healthcare professional for medical advice.</p>
-<h2>8. Changes to This Policy</h2>
-<p>We may update this policy occasionally. If we make significant changes (such as adding a cloud-sync feature), we will provide a prominent notice within the app and require your explicit consent.</p>
+  <!-- STICKY NAVIGATION -->
+  <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 bg-soft-white/95 backdrop-blur-sm">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+      <a href="/" class="font-manrope font-extrabold text-2xl tracking-widest text-rose-coral select-none">
+        kalena
+      </a>
+      <div class="hidden sm:flex items-center gap-8">
+        <a href="/privacy-policy.html"
+           class="font-roboto text-sm font-medium text-rose-coral">
+          Privacy
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.kalenaflow.app"
+           class="btn-nav font-manrope font-bold text-sm text-white px-5 py-2.5 rounded-full">
+          Get the App
+        </a>
+      </div>
+      <div class="sm:hidden">
+        <a href="/" class="font-roboto text-sm text-midnight/60 hover:text-rose-coral transition-colors">← Home</a>
+      </div>
+    </div>
+  </nav>
 
 
-</div>
-</div>
-</section>
-<footer class="w-full px-6 lg:px-40 py-12 border-t border-primary/10">
-<div class="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-<div class="flex items-center gap-2">
-<span class="font-display font-bold text-midnight/50 dark:text-white/50">kalena</span>
-</div>
-<p class="text-sm font-body text-midnight/40 dark:text-white/40">© 2026 Kalena Health. All rights reserved.</p>
-<div class="flex gap-8" id="privacy">
-<a class="text-sm font-medium font-body text-midnight dark:text-white hover:text-primary transition-colors" href="/privacy-policy">Privacy</a>
-</div>
-</div>
-</footer>
-</main>
+  <!-- HERO -->
+  <section class="pt-28 pb-12 md:pt-36 md:pb-16 px-5 sm:px-8" style="background: linear-gradient(135deg, #FFF9F7 0%, #FFE8EF 40%, #FFF9F7 100%);">
+    <div class="max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2 bg-white border border-rose-coral/20 rounded-full px-4 py-1.5 mb-6 shadow-sm">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 2L4 6v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V6l-8-4z" stroke="#FF6B8A" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M9 12l2 2 4-4" stroke="#FF6B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="font-roboto text-xs font-medium text-midnight/70">Privacy-first by design</span>
+      </div>
+      <h1 class="font-manrope font-extrabold text-4xl sm:text-5xl text-midnight mb-4">Privacy Policy</h1>
+      <p class="font-roboto text-midnight/55 text-sm">
+        Kalena Flow Ltd &nbsp;·&nbsp; Last updated: 30 March 2026
+      </p>
+    </div>
+  </section>
 
-</body></html>
+
+  <!-- MAIN CONTENT -->
+  <main class="px-5 sm:px-8 py-16">
+    <div class="max-w-3xl mx-auto">
+
+      <!-- TL;DR callout -->
+      <div class="rounded-2xl p-6 mb-12" style="background: linear-gradient(135deg, #FF6B8A, #FF9F80);">
+        <h2 class="font-manrope font-bold text-xl text-white mb-3">The short version</h2>
+        <p class="font-roboto text-white/90 text-base leading-relaxed">
+          Everything you log in Kalena Flow — periods, symptoms, notes — is stored only on your device. We have no servers. We cannot see your data. We never could.
+        </p>
+      </div>
+
+      <!-- Sections -->
+      <div class="space-y-12">
+
+        <!-- 1. Introduction -->
+        <div class="policy-section">
+          <h2 class="font-manrope font-bold text-2xl text-midnight mb-4">1. Introduction</h2>
+          <p class="font-roboto text-midnight/70 leading-relaxed mb-3">
+            Kalena Flow ("we," "our," or "us") is operated by Kalena Flow Ltd, a company registered in Ireland. We are committed to protecting your privacy through our core architecture: a "Local-First" design where your health data is stored exclusively on your device and is never transmitted to our servers or any third party.
+          </p>
+          <p class="font-roboto text-midnight/70 leading-relaxed">
+            This policy applies to the Kalena Flow Android app and the kalenaflow.com website.
+          </p>
+        </div>
+
+        <!-- 2. No Data Collection -->
+        <div class="policy-section">
+          <h2 class="font-manrope font-bold text-2xl text-midnight mb-4">2. No Data Collection Guarantee</h2>
+          <p class="font-roboto text-midnight/70 leading-relaxed mb-4">
+            Our core principle is that your health data belongs to you alone.
+          </p>
+
+          <div class="space-y-4">
+            <div class="bg-white rounded-2xl p-5 border border-midnight/5">
+              <h3 class="font-manrope font-semibold text-base text-midnight mb-2">Menstrual &amp; Health Data</h3>
+              <p class="font-roboto text-sm text-midnight/65 leading-relaxed">
+                All period logs, cycle dates, symptoms, BBT readings, and notes are stored in a local SQLite database on your device. This data is never transmitted anywhere. We do not have access to it and cannot retrieve it even if requested.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-5 border border-midnight/5">
+              <h3 class="font-manrope font-semibold text-base text-midnight mb-2">No Account Required</h3>
+              <p class="font-roboto text-sm text-midnight/65 leading-relaxed">
+                You do not need to create an account or provide an email address to use Kalena Flow. The app works fully offline from the moment you install it.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-5 border border-midnight/5">
+              <h3 class="font-manrope font-semibold text-base text-midnight mb-2">No Network Access for Health Data</h3>
+              <p class="font-roboto text-sm text-midnight/65 leading-relaxed">
+                The app does not request internet permission for any health-related functionality. Your cycle data cannot leave your device through the app.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Data We May Process -->
+        <div class="policy-section">
+          <h2 class="font-manrope font-bold text-2xl text-midnight mb-4">3. Data We May Process</h2>
+          <p class="font-roboto text-midnight/70 leading-relaxed mb-4">
+            While your health data is entirely private, certain limited non-sensitive data is processed to enable app functionality:
+          </p>
+          <div class="space-y-4">
+            <div class="bg-white rounded-2xl p-5 border border-midnight/5">
+              <h3 class="font-manrope font-semibold text-base text-midnight mb-2">In-App Purchases</h3>
+              <p class="font-roboto text-sm text-midnight/65 leading-relaxed">
+                When you purchase the Premium unlock, the transaction is handled entirely by Google Play Billing. We receive only a confirmation token to activate your premium features. We do not receive or store your payment details, real name, or billing address.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-5 border border-midnight/5">
+              <h3 class="font-manrope font-semibold text-base text-midnight mb-2">App Preferences</h3>
+              <p class="font-roboto text-sm text-midnight/65 leading-relaxed">
+                Settings such as your display name, theme preference, and premium status are stored locally on your device using AsyncStorage. This data never leaves your device.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Third-Party Services -->
+        <div class="policy-section">
+          <h2 class="font-manrope font-bold text-2xl text-midnight mb-4">4. Third-Party Services</h2>
+          <p class="font-roboto text-midnight/70 leading-relaxed mb-4">
+            To maintain your privacy, we strictly limit third-party integrations:
+          </p>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: #FFE8EF;">
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#FF6B8A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <p class="font-roboto text-sm text-midnight/70 leading-relaxed"><strong class="text-midnight font-medium">Google Play Services</strong> — used only for processing in-app purchases and delivering app updates.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: #FFE8EF;">
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#FF6B8A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <p class="font-roboto text-sm text-midnight/70 leading-relaxed"><strong class="text-midnight font-medium">No analytics SDKs</strong> — we do not use Google Analytics, Firebase, Meta Pixel, or any behaviour tracking tool.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: #FFE8EF;">
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#FF6B8A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <p class="font-roboto text-sm text-midnight/70 leading-relaxed"><strong class="text-midnight font-medium">No advertising SDKs</strong> — we do not serve ads. No advertiser ever receives data from Kalena Flow.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Security -->
+        <div class="policy-section">
+          <h2 class="font-manrope font-bold text-2xl text-midnight mb-4">5. Security</h2>
+          <p class="font-roboto text-midnight/70 leading-relaxed mb-3">
+            Because your data is stored locally on your device, its security depends on the security of your device. We recommend:
+          </p>
+          <ul class="space-y-2 mb-4">
+            <li class="font-roboto text-sm text-midnight/70 flex items-start gap-2">
+              <span class="text-rose-coral mt-1">·</span> Using a device passcode or biometric lock
+            </li>
+            <li class="font-roboto text-sm text-midnight/70 flex items-start gap-2">
+              <span class="text-rose-coral mt-1">·</span> Enabling the Privacy Lock feature within Kalena Flow settings
+            </li>
+          </ul>
+          <div class="bg-light-pink rounded-xl p-4">
+            <p class="font-roboto text-sm text-midnight/70 leading-relaxed">
+              <strong class="text-midnight font-medium">Important:</strong> If you delete the app or lose your device, your data will be permanently lost unless you have used the Export function to create a local backup file.
+            </p>
+          </div>
+        </div>
+
+        <!-- 6. Children's Privacy -->
+        <div class="policy-section">
+          <h2 class="font-manrope font-bold text-2xl text-midnight mb-4">6. Children's Privacy</h2>
+          <p class="font-roboto text-midnight/70 leading-relaxed">
+            Kalena Flow is intended for users aged 13 and over. We do not knowingly collect any personal information from children under 13. Because the app collects no data at all, it poses no data privacy risk to any age group. If you believe a child under 13 is using the app, please contact us at <a href="mailto:hello@kalenaflow.com" class="text-rose-coral hover:underline">hello@kalenaflow.com</a>.
+          </p>
+        </div>
+
+        <!-- 7. Your Rights (GDPR) -->
+        <div class="policy-section">
+          <h2 class="font-manrope font-bold text-2xl text-midnight mb-4">7. Your Rights (GDPR)</h2>
+          <p class="font-roboto text-midnight/70 leading-relaxed mb-4">
+            As an Irish-registered company, Kalena Flow Ltd complies with the General Data Protection Regulation (GDPR). You have the following rights:
+          </p>
+          <div class="space-y-3">
+            <div class="bg-white rounded-2xl p-5 border border-midnight/5">
+              <h3 class="font-manrope font-semibold text-base text-midnight mb-1">Access &amp; Portability</h3>
+              <p class="font-roboto text-sm text-midnight/65 leading-relaxed">Use the "Export to JSON/CSV" feature in Settings at any time to download your full data history.</p>
+            </div>
+            <div class="bg-white rounded-2xl p-5 border border-midnight/5">
+              <h3 class="font-manrope font-semibold text-base text-midnight mb-1">Erasure</h3>
+              <p class="font-roboto text-sm text-midnight/65 leading-relaxed">Delete all your data instantly using "Clear All Data" in Settings, or by uninstalling the app. Deletion is immediate and permanent — there is no 30-day retention period.</p>
+            </div>
+            <div class="bg-white rounded-2xl p-5 border border-midnight/5">
+              <h3 class="font-manrope font-semibold text-base text-midnight mb-1">Contact Us</h3>
+              <p class="font-roboto text-sm text-midnight/65 leading-relaxed">For any privacy-related questions, contact us at <a href="mailto:hello@kalenaflow.com" class="text-rose-coral hover:underline">hello@kalenaflow.com</a>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Medical Disclaimer -->
+        <div class="policy-section">
+          <h2 class="font-manrope font-bold text-2xl text-midnight mb-4">8. Medical Disclaimer</h2>
+          <p class="font-roboto text-midnight/70 leading-relaxed">
+            Kalena Flow is a personal tracking and informational tool. It is not a medical device and must not be used as a form of contraception or for the diagnosis of any medical condition. Predictions and estimates are based on historical patterns and may not be accurate for every individual. Always consult a qualified healthcare professional for medical advice.
+          </p>
+        </div>
+
+        <!-- 9. Changes to This Policy -->
+        <div class="policy-section">
+          <h2 class="font-manrope font-bold text-2xl text-midnight mb-4">9. Changes to This Policy</h2>
+          <p class="font-roboto text-midnight/70 leading-relaxed">
+            We may update this policy occasionally. The "Last updated" date at the top of this page will reflect any changes. If we make significant changes — such as adding any form of data transmission or cloud features — we will provide a prominent notice within the app and require your explicit consent before those features are used.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Contact callout -->
+      <div class="mt-16 rounded-2xl p-8 text-center" style="background: linear-gradient(135deg, #FFE8EF, #FFF9F7);">
+        <h2 class="font-manrope font-bold text-xl text-midnight mb-3">Questions about your privacy?</h2>
+        <p class="font-roboto text-midnight/65 text-sm mb-5">We're happy to explain exactly how your data is handled.</p>
+        <a href="mailto:hello@kalenaflow.com"
+           class="inline-flex items-center gap-2 font-manrope font-bold text-sm text-white px-6 py-3 rounded-full"
+           style="background: linear-gradient(135deg, #FF6B8A, #FF9F80);">
+          hello@kalenaflow.com
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="bg-midnight py-10 px-5 sm:px-8 mt-8">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+        <span class="font-manrope font-extrabold text-xl tracking-widest text-rose-coral">kalena</span>
+        <span class="hidden sm:block text-white/20">·</span>
+        <span class="font-roboto text-xs text-white/40">© 2026 Kalena Flow Ltd. All rights reserved.</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="/privacy-policy.html"
+           class="font-roboto text-xs text-white/45 hover:text-white/75 transition-colors duration-200">
+          Privacy Policy
+        </a>
+      </div>
+      <div class="font-roboto text-xs text-white/40">
+        Made with ❤️ in Ireland
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 16);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
