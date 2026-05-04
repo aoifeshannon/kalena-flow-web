@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Support — Kalena</title>
+<meta name="description" content="Get help with Kalena. Common questions about backups, premium unlock, predictions, and getting support." />
+<meta name="theme-color" content="#FF6B8A" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --rose-coral: #FF6B8A;
+    --peach-glow: #FF9F80;
+    --soft-white: #FFF9F7;
+    --midnight: #1E2A38;
+    --light-pink: #FFE8ED;
+    --aqua: #80C4CF;
+    --light-aqua: #E8F7F9;
+    --text-muted: #5A6573;
+    --border-subtle: #F0E7E3;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Roboto', -apple-system, sans-serif;
+    background: var(--soft-white);
+    color: var(--midnight);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  a { color: var(--rose-coral); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ========== Header ========== */
+  header {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--soft-white);
+  }
+
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    background: linear-gradient(135deg, var(--rose-coral), var(--peach-glow));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  nav a {
+    color: var(--midnight);
+    font-weight: 500;
+    font-size: 15px;
+  }
+
+  nav a.cta-link {
+    background: var(--rose-coral);
+    color: var(--soft-white);
+    padding: 10px 20px;
+    border-radius: 999px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  nav a.cta-link:hover {
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(255, 107, 138, 0.3);
+  }
+
+  /* ========== Page Hero ========== */
+  .page-hero {
+    padding: 64px 0 48px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .page-eyebrow {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--rose-coral);
+    background: var(--light-pink);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(36px, 5vw, 56px);
+    margin-bottom: 20px;
+  }
+
+  .page-hero p {
+    font-size: 18px;
+    color: var(--text-muted);
+    max-width: 560px;
+    margin: 0 auto 32px;
+  }
+
+  .contact-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--light-aqua);
+    border: 1px solid var(--aqua);
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-size: 15px;
+  }
+
+  .contact-card strong { font-family: 'Manrope', sans-serif; }
+
+  .contact-card a {
+    color: var(--midnight);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--aqua);
+    text-underline-offset: 3px;
+  }
+
+  /* ========== FAQ ========== */
+  .faq {
+    padding: 64px 0;
+  }
+
+  .faq h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .faq-section-intro {
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    font-size: 16px;
+  }
+
+  details.faq-item {
+    background: var(--soft-white);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  details.faq-item[open] {
+    border-color: var(--rose-coral);
+  }
+
+  details.faq-item summary {
+    padding: 20px 24px;
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--midnight);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    transition: background 0.2s;
+  }
+
+  details.faq-item summary::-webkit-details-marker { display: none; }
+
+  details.faq-item summary:hover {
+    background: rgba(255, 107, 138, 0.03);
+  }
+
+  details.faq-item summary::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-right: 2px solid var(--rose-coral);
+    border-bottom: 2px solid var(--rose-coral);
+    transform: rotate(45deg);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  details.faq-item[open] summary::after {
+    transform: rotate(-135deg);
+  }
+
+  .faq-body {
+    padding: 0 24px 24px;
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .faq-body p { margin-bottom: 12px; }
+  .faq-body p:last-child { margin-bottom: 0; }
+
+  .faq-body strong { color: var(--midnight); font-weight: 600; }
+
+  .faq-body ol, .faq-body ul {
+    margin: 12px 0;
+    padding-left: 20px;
+  }
+
+  .faq-body li {
+    margin-bottom: 6px;
+  }
+
+  /* ========== Section Divider ========== */
+  .faq-group {
+    margin-bottom: 48px;
+  }
+
+  /* ========== Bottom Contact ========== */
+  .bottom-contact {
+    background: var(--midnight);
+    color: var(--soft-white);
+    padding: 64px 0;
+    text-align: center;
+  }
+
+  .bottom-contact h2 {
+    color: var(--soft-white);
+    font-size: clamp(28px, 4vw, 40px);
+    margin-bottom: 16px;
+  }
+
+  .bottom-contact p {
+    color: rgba(255, 249, 247, 0.75);
+    font-size: 17px;
+    margin-bottom: 32px;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--rose-coral);
+    color: var(--soft-white);
+    padding: 16px 32px;
+    border-radius: 999px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-primary:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 107, 138, 0.4);
+  }
+
+  /* ========== Footer ========== */
+  footer {
+    background: var(--midnight);
+    color: rgba(255, 249, 247, 0.7);
+    padding: 32px 0;
+    font-size: 14px;
+    border-top: 1px solid rgba(255, 249, 247, 0.1);
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--soft-white);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: rgba(255, 249, 247, 0.7);
+  }
+
+  .footer-links a:hover {
+    color: var(--peach-glow);
+    text-decoration: none;
+  }
+
+  /* ========== Responsive ========== */
+  @media (max-width: 640px) {
+    nav ul { gap: 16px; }
+    nav a { font-size: 14px; }
+    nav a.cta-link { padding: 8px 14px; }
+    .page-hero { padding: 48px 0 32px; }
+    .faq { padding: 48px 0; }
+    details.faq-item summary { padding: 16px 18px; font-size: 15px; }
+    .faq-body { padding: 0 18px 20px; }
+    .contact-card { flex-direction: column; gap: 6px; padding: 14px 20px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">kalena</a>
+    <nav>
+      <ul>
+        <li><a href="/support.html">Support</a></li>
+        <li><a href="/privacy-policy.html">Privacy</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=com.kalenaflow.app" class="cta-link">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ========== Page Hero ========== -->
+<section class="page-hero">
+  <div class="container">
+    <span class="page-eyebrow">Support</span>
+    <h1>Need a hand with Kalena?</h1>
+    <p>Most questions are answered below. If yours isn't, we're a real person on the other end of the email — usually replying within a day or two.</p>
+    <div class="contact-card">
+      <strong>Contact:</strong>
+      <a href="mailto:hello@kalenaflow.com">hello@kalenaflow.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="faq">
+  <div class="container">
+
+    <div class="faq-group">
+      <h2>Your data</h2>
+      <p class="faq-section-intro">How backups, exports, and deletion work in a local-only app.</p>
+
+      <details class="faq-item">
+        <summary>How do I export my data?</summary>
+        <div class="faq-body">
+          <p>Open Kalena, go to <strong>Settings</strong>, then tap <strong>Backup to JSON</strong>.</p>
+          <p>This generates a JSON file containing all your periods, symptoms, BBT readings, and preferences. You can save it to your device, email it to yourself, or send it to cloud storage of your choice — your choice, not ours.</p>
+          <p>The export is a plain text file you can open and read. There's no encryption or proprietary format — your data is yours, in a format anyone can use.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I restore from a backup?</summary>
+        <div class="faq-body">
+          <p>In <strong>Settings</strong>, tap <strong>Restore from JSON</strong>, then select your backup file.</p>
+          <p>Restoring will <strong>replace</strong> any data currently in the app — so if you've logged anything since your backup, that data will be overwritten. If you want to merge old and new data, contact us at hello@kalenaflow.com and we'll help you work it out manually.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>I lost my phone — can I recover my data?</summary>
+        <div class="faq-body">
+          <p><strong>If you have a backup file saved somewhere else (cloud storage, email, another device): yes.</strong> Install Kalena on your new phone and use Restore from JSON.</p>
+          <p><strong>If you don't have a backup: no.</strong> This is the trade-off for a privacy-first app — we have no servers, so there's nothing for us to restore. Your data was never sent anywhere we could keep a copy.</p>
+          <p>Going forward, we recommend exporting a backup every month or so and saving it somewhere you trust. It takes about 10 seconds.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I sync between my phone and another device?</summary>
+        <div class="faq-body">
+          <p>No — by design. Sync requires a server somewhere to store and forward your data, which would break the privacy guarantee that's the whole point of Kalena.</p>
+          <p>If you need your data on multiple devices, you can use <strong>Backup to JSON</strong> on one device and <strong>Restore from JSON</strong> on the other. It's manual, but it keeps your data entirely under your control.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I delete all my data?</summary>
+        <div class="faq-body">
+          <p>Two ways:</p>
+          <ol>
+            <li><strong>Inside the app:</strong> Settings → Clear All Data. Instant and permanent.</li>
+            <li><strong>Uninstall the app:</strong> all data is removed when Android removes the app's storage container.</li>
+          </ol>
+          <p>There's no 30-day grace period, no soft-delete on a server somewhere. Once it's gone, it's gone.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-group">
+      <h2>Premium unlock</h2>
+      <p class="faq-section-intro">Buying, restoring, and what's included.</p>
+
+      <details class="faq-item">
+        <summary>How does the one-time premium unlock work?</summary>
+        <div class="faq-body">
+          <p>Kalena Premium is a single one-time purchase processed through Google Play Billing. Buy it once and the premium features unlock on that Google account, on every device you sign in to with that account, forever.</p>
+          <p>There's no subscription, no auto-renewal, and no recurring charges. The current price is shown in the app (Google Play sets the price for your region).</p>
+          <p>Premium includes: Smart Predictions, Advanced Analytics, BBT tracking, and Health Report PDF export.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>I bought premium but it's not unlocked — what now?</summary>
+        <div class="faq-body">
+          <p>This usually fixes it: open Kalena → <strong>Settings</strong> → <strong>Restore Purchases</strong>. The app will check your Google Play account for previous purchases and unlock premium if it finds one.</p>
+          <p>If that doesn't work, check that you're signed in to the same Google account you used to buy premium. If you're sure you are and it's still not working, email <a href="mailto:hello@kalenaflow.com">hello@kalenaflow.com</a> with your purchase confirmation and we'll sort it.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>I want a refund.</summary>
+        <div class="faq-body">
+          <p>Refunds for Google Play purchases are handled by Google, not by us. Within 48 hours of purchase you can request a refund directly through the Play Store: <a href="https://support.google.com/googleplay/answer/2479637" target="_blank" rel="noopener">support.google.com/googleplay/answer/2479637</a>.</p>
+          <p>After 48 hours, refunds are at Google's discretion — but if you reach out to us at <a href="mailto:hello@kalenaflow.com">hello@kalenaflow.com</a> we're happy to support a refund request where the case is reasonable.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is there a free trial?</summary>
+        <div class="faq-body">
+          <p>Kalena's free version isn't a trial — it's a permanent free tier with all the core tracking features (periods, symptoms, calendar, basic insights, privacy lock, backup &amp; restore).</p>
+          <p>Premium adds advanced features (Smart Predictions, Advanced Analytics, BBT tracking, PDF export). Try the free version as long as you like, and only upgrade if you want the extras.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-group">
+      <h2>Predictions &amp; tracking</h2>
+      <p class="faq-section-intro">How Kalena calculates predictions, and what to do when something looks off.</p>
+
+      <details class="faq-item">
+        <summary>The app is predicting my next period incorrectly — why?</summary>
+        <div class="faq-body">
+          <p>Kalena's predictions get more accurate the more cycles you log. With fewer than three full cycles tracked, the app uses your stated average cycle length (default 28 days). After that, it shifts to using your actual cycle history.</p>
+          <p>If you have irregular cycles, the variability will be flagged in the Smart Prediction view (Premium) along with a confidence score. A "low confidence" badge means the prediction is a best guess based on limited or inconsistent data — not a guarantee.</p>
+          <p>If you've logged 6+ cycles and predictions still feel wrong, double-check the start dates of your most recent periods are accurate — a single mis-logged date can throw off the average for several months.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How does Kalena predict my fertile window?</summary>
+        <div class="faq-body">
+          <p>Kalena uses the standard luteal-phase model: typically 14 days before your next predicted period, with the fertile window covering roughly the 5 days before and 1 day after.</p>
+          <p>This is a population average — your personal fertile window may differ. For more accurate ovulation tracking, the BBT (basal body temperature) feature in Premium uses your morning temperatures to detect actual ovulation, which is more personalised than calendar-based predictions alone.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is Kalena suitable for irregular cycles or perimenopause?</summary>
+        <div class="faq-body">
+          <p>Yes. The prediction engine handles cycles from 21 to 45+ days and explicitly accounts for variability. Smart Predictions (Premium) will tell you when your cycles are getting longer, shorter, or becoming more irregular — common signals during perimenopause.</p>
+          <p>That said, predictions are based on patterns. If your cycles are highly unpredictable, Kalena is best used as a tracker for your patterns over time, not a predictor of any single upcoming period.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-group">
+      <h2>Important to know</h2>
+
+      <details class="faq-item">
+        <summary>Can I use Kalena as contraception?</summary>
+        <div class="faq-body">
+          <p><strong>No.</strong> Kalena is a tracking and informational tool. It is not a medical device and must not be used as a method of birth control or for diagnosing any medical condition.</p>
+          <p>The fertile window predictions are estimates based on cycle averages. Real ovulation timing varies, and even a regular cycle can have unpredictable months. For reliable contraception, please consult a healthcare professional.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Does Kalena work without internet?</summary>
+        <div class="faq-body">
+          <p>Yes — completely. The app makes no network requests during normal use. Your data stays local, predictions are calculated on your device, and nothing is sent anywhere.</p>
+          <p>The only time the app needs internet is when you make a one-time premium purchase (handled by Google Play) or restore a previous purchase. Once premium is unlocked, you can stay offline forever.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>I found a bug or have a feature request.</summary>
+        <div class="faq-body">
+          <p>Please email <a href="mailto:hello@kalenaflow.com">hello@kalenaflow.com</a> with as much detail as you can — what you were doing, what happened, what you expected to happen. Screenshots help.</p>
+          <p>Kalena is built and maintained by a solo developer in Dublin, so replies aren't instant — but every email gets read by a real person.</p>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== Bottom Contact ========== -->
+<section class="bottom-contact">
+  <div class="container">
+    <h2>Still stuck?</h2>
+    <p>If your question isn't here, drop us a line. We're a small team — replies usually within a day or two.</p>
+    <a href="mailto:hello@kalenaflow.com" class="btn-primary">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+        <polyline points="22,6 12,13 2,6"/>
+      </svg>
+      hello@kalenaflow.com
+    </a>
+  </div>
+</section>
+
+<!-- ========== Footer ========== -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">kalena</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/support.html">Support</a></li>
+      <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+    </ul>
+  </div>
+  <div class="footer-inner" style="margin-top: 16px; border-top: 1px solid rgba(255, 249, 247, 0.1); padding-top: 16px; font-size: 13px;">
+    <span>© 2026 Kalena Flow Ltd. Made in Ireland.</span>
+  </div>
+</footer>
+
+</body>
+</html>

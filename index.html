@@ -1,548 +1,760 @@
 <!DOCTYPE html>
-<html lang="en" style="scroll-behavior: smooth;">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Kalena Flow — the period tracker that stays on your phone. No cloud. No subscription. No data sharing. Ever." />
-  <meta name="theme-color" content="#FF6B8A" />
-  <title>Kalena Flow — Know Your Flow</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kalena — Private period &amp; cycle tracker. No cloud. No subscription.</title>
+<meta name="description" content="A private period and fertility tracker. Works fully offline. Pay once, no subscription. Your data stays on your phone — no account, no tracking." />
+<meta name="theme-color" content="#FF6B8A" />
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+<!-- Open Graph -->
+<meta property="og:title" content="Kalena — Private period &amp; cycle tracker" />
+<meta property="og:description" content="Track your cycle. Keep it private. Works fully offline. Pay once. No subscription." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://kalenaflow.com/" />
+<meta property="og:image" content="https://kalenaflow.com/screenshots/screen-insights.png" />
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet" />
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'rose-coral':   '#FF6B8A',
-            'peach-glow':   '#FF9F80',
-            'soft-white':   '#FFF9F7',
-            'midnight':     '#1E2A38',
-            'light-pink':   '#FFE8EF',
-            'light-aqua':   '#E8F4FF',
-          },
-          fontFamily: {
-            manrope: ['Manrope', 'sans-serif'],
-            roboto:  ['Roboto', 'sans-serif'],
-          },
-        },
-      },
-    }
-  </script>
+<style>
+  :root {
+    --rose-coral: #FF6B8A;
+    --peach-glow: #FF9F80;
+    --soft-white: #FFF9F7;
+    --midnight: #1E2A38;
+    --light-pink: #FFE8ED;
+    --aqua: #80C4CF;
+    --light-aqua: #E8F7F9;
+    --text-muted: #5A6573;
+    --border-subtle: #F0E7E3;
+  }
 
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #FFF9F7;
-      color: #1E2A38;
-      -webkit-font-smoothing: antialiased;
-    }
-    h1, h2, h3, h4, .font-manrope { font-family: 'Manrope', sans-serif; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    #main-nav {
-      transition: box-shadow 0.2s ease, background 0.2s ease;
-    }
-    #main-nav.scrolled {
-      box-shadow: 0 2px 20px rgba(30, 42, 56, 0.08);
-      background: rgba(255, 249, 247, 0.97);
-    }
+  html { scroll-behavior: smooth; }
 
-    .hero-gradient {
-      background: linear-gradient(135deg, #FFF9F7 0%, #FFE8EF 40%, #FFF9F7 100%);
-    }
+  body {
+    font-family: 'Roboto', -apple-system, sans-serif;
+    background: var(--soft-white);
+    color: var(--midnight);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-    .phone-frame {
-      border-radius: 2.5rem;
-      box-shadow:
-        0 0 0 2px rgba(30,42,56,0.06),
-        0 2px 4px rgba(30,42,56,0.04),
-        0 8px 32px rgba(255, 107, 138, 0.18),
-        0 32px 80px rgba(30, 42, 56, 0.18);
-      overflow: hidden;
-    }
+  h1, h2, h3, h4 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
 
-    .privacy-gradient {
-      background: linear-gradient(135deg, #FF6B8A 0%, #FF9F80 100%);
-    }
+  a { color: var(--rose-coral); text-decoration: none; }
+  a:hover { text-decoration: underline; }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
 
-    .screenshot-frame {
-      border-radius: 1.5rem;
-      overflow: hidden;
-      box-shadow: 0 4px 6px rgba(30,42,56,0.04), 0 16px 40px rgba(30,42,56,0.12);
-    }
+  /* ========== Header ========== */
+  header {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--soft-white);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
 
-    .feature-card {
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .feature-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 40px rgba(255, 107, 138, 0.14), 0 2px 8px rgba(30,42,56,0.06);
-    }
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-    .btn-primary {
-      background: linear-gradient(135deg, #FF6B8A 0%, #FF9F80 100%);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-      box-shadow: 0 4px 20px rgba(255, 107, 138, 0.35);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(255, 107, 138, 0.45);
-      opacity: 0.95;
-    }
-    .btn-primary:active {
-      transform: translateY(0);
-      box-shadow: 0 2px 10px rgba(255, 107, 138, 0.3);
-    }
+  .logo {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    background: linear-gradient(135deg, var(--rose-coral), var(--peach-glow));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+  }
 
-    .btn-nav {
-      background: linear-gradient(135deg, #FF6B8A, #FF9F80);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 2px 10px rgba(255, 107, 138, 0.3);
-    }
-    .btn-nav:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(255, 107, 138, 0.4);
-    }
-  </style>
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  nav a {
+    color: var(--midnight);
+    font-weight: 500;
+    font-size: 15px;
+  }
+
+  nav a.cta-link {
+    background: var(--rose-coral);
+    color: var(--soft-white);
+    padding: 10px 20px;
+    border-radius: 999px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  nav a.cta-link:hover {
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(255, 107, 138, 0.3);
+  }
+
+  /* ========== Hero ========== */
+  .hero {
+    padding: 96px 0 64px;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--rose-coral);
+    background: var(--light-pink);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+    letter-spacing: 0.02em;
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 6vw, 72px);
+    margin-bottom: 24px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero h1 .accent {
+    background: linear-gradient(135deg, var(--rose-coral), var(--peach-glow));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero p.lead {
+    font-size: 19px;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.55;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--midnight);
+    color: var(--soft-white);
+    padding: 16px 32px;
+    border-radius: 999px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-primary:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(30, 42, 56, 0.15);
+  }
+
+  .btn-primary svg { width: 20px; height: 20px; }
+
+  .hero-meta {
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  /* ========== Pillars ========== */
+  .pillars {
+    padding: 64px 0;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+
+  .pillar h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .pillar-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--light-pink);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--rose-coral);
+  }
+
+  .pillar p { color: var(--text-muted); font-size: 15px; }
+
+  /* ========== Sections ========== */
+  section.content {
+    padding: 96px 0;
+  }
+
+  .section-eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--rose-coral);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-size: clamp(32px, 4vw, 48px);
+    margin-bottom: 24px;
+    max-width: 720px;
+  }
+
+  .section-lead {
+    font-size: 18px;
+    color: var(--text-muted);
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  /* ========== Screenshots ========== */
+  .screenshots {
+    background: linear-gradient(180deg, var(--soft-white) 0%, var(--light-pink) 100%);
+  }
+
+  .screenshot-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+  }
+
+  .screenshot-card {
+    text-align: center;
+  }
+
+  .screenshot-card img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(30, 42, 56, 0.12);
+    transition: transform 0.3s ease;
+  }
+
+  .screenshot-card:hover img {
+    transform: translateY(-4px);
+  }
+
+  .screenshot-card p {
+    margin-top: 16px;
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  /* ========== Comparison ========== */
+  .comparison-wrap {
+    background: var(--soft-white);
+    border: 1px solid var(--border-subtle);
+    border-radius: 24px;
+    overflow: hidden;
+    margin-top: 16px;
+  }
+
+  .comparison-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .comparison-row:last-child { border-bottom: none; }
+
+  .comparison-row > div {
+    padding: 20px 24px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+  }
+
+  .comparison-header {
+    background: var(--midnight);
+    color: var(--soft-white);
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+  }
+
+  .comparison-header > div {
+    padding: 16px 24px;
+  }
+
+  .comparison-header .kalena-col {
+    background: var(--rose-coral);
+  }
+
+  .comparison-row .label {
+    font-weight: 500;
+    color: var(--midnight);
+    background: #FAFAF8;
+  }
+
+  .comparison-row .other {
+    color: var(--text-muted);
+  }
+
+  .comparison-row .kalena {
+    color: var(--midnight);
+    font-weight: 500;
+    background: linear-gradient(135deg, rgba(255, 107, 138, 0.04), rgba(255, 159, 128, 0.04));
+  }
+
+  /* ========== Privacy ========== */
+  .privacy-section {
+    background: var(--midnight);
+    color: var(--soft-white);
+  }
+
+  .privacy-section .section-eyebrow {
+    color: var(--peach-glow);
+  }
+
+  .privacy-section .section-title { color: var(--soft-white); }
+
+  .privacy-section .section-lead {
+    color: rgba(255, 249, 247, 0.75);
+  }
+
+  .privacy-quote {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(22px, 2.6vw, 28px);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--soft-white);
+    border-left: 3px solid var(--rose-coral);
+    padding-left: 24px;
+    margin: 32px 0 48px;
+    max-width: 800px;
+  }
+
+  .privacy-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 32px;
+    margin-bottom: 32px;
+  }
+
+  .privacy-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: rgba(255, 249, 247, 0.9);
+    font-size: 16px;
+  }
+
+  .privacy-list li svg {
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .privacy-section .read-more {
+    color: var(--peach-glow);
+    font-weight: 600;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ========== Waitlist ========== */
+  .waitlist {
+    text-align: center;
+    background: var(--light-pink);
+  }
+
+  .waitlist .section-title {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .waitlist .section-lead {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .brevo-wrap {
+    max-width: 540px;
+    margin: 0 auto;
+    background: var(--soft-white);
+    border-radius: 16px;
+    padding: 8px;
+    box-shadow: 0 4px 24px rgba(30, 42, 56, 0.06);
+  }
+
+  .brevo-wrap iframe {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    min-height: 280px;
+    display: block;
+  }
+
+  /* ========== Final CTA ========== */
+  .final-cta {
+    text-align: center;
+    padding: 96px 0;
+  }
+
+  .final-cta h2 {
+    font-size: clamp(36px, 5vw, 56px);
+    margin-bottom: 20px;
+  }
+
+  .final-cta p {
+    font-size: 18px;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+  }
+
+  .ios-note {
+    margin-top: 24px;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  .ios-note a { color: var(--rose-coral); font-weight: 500; }
+
+  /* ========== Footer ========== */
+  footer {
+    background: var(--midnight);
+    color: rgba(255, 249, 247, 0.7);
+    padding: 48px 0 32px;
+    font-size: 14px;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .footer-logo {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--soft-white);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: rgba(255, 249, 247, 0.7);
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: var(--peach-glow);
+    text-decoration: none;
+  }
+
+  .footer-bottom {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 249, 247, 0.1);
+    font-size: 13px;
+  }
+
+  /* ========== Responsive ========== */
+  @media (max-width: 768px) {
+    .pillars-grid { grid-template-columns: 1fr; gap: 32px; }
+    .screenshot-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    nav ul { gap: 16px; }
+    nav a { font-size: 14px; }
+    nav a.cta-link { padding: 8px 14px; }
+    .hero { padding: 64px 0 48px; }
+    section.content { padding: 64px 0; }
+    .privacy-list { grid-template-columns: 1fr; }
+    .comparison-row { grid-template-columns: 1.4fr 1fr 1fr; }
+    .comparison-row > div { padding: 14px 16px; font-size: 13px; }
+    .comparison-header > div { padding: 12px 16px; font-size: 13px; }
+  }
+</style>
 </head>
-<body class="bg-soft-white">
+<body>
 
-  <!-- STICKY NAVIGATION -->
-  <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 bg-soft-white/95 backdrop-blur-sm">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
-      <a href="/" class="font-manrope font-extrabold text-2xl tracking-widest text-rose-coral select-none">
-        kalena
-      </a>
-      <div class="hidden sm:flex items-center gap-8">
-        <a href="/privacy-policy.html"
-           class="font-roboto text-sm font-medium text-midnight/70 hover:text-rose-coral transition-colors duration-200">
-          Privacy
-        </a>
-        <a href="https://play.google.com/store/apps/details?id=com.kalenaflow.app"
-           class="btn-nav font-manrope font-bold text-sm text-white px-5 py-2.5 rounded-full">
-          Get Early Access
-        </a>
-      </div>
-      <div class="sm:hidden flex items-center gap-3">
-        <a href="https://play.google.com/store/apps/details?id=com.kalenaflow.app"
-           class="btn-nav font-manrope font-bold text-xs text-white px-4 py-2 rounded-full">
-          Early Access
-        </a>
-      </div>
-    </div>
-  </nav>
+<header>
+  <div class="container header-inner">
+    <a href="/" class="logo">kalena</a>
+    <nav>
+      <ul>
+        <li><a href="/support.html">Support</a></li>
+        <li><a href="/privacy-policy.html">Privacy</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=com.kalenaflow.app" class="cta-link">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
+<!-- ========== Hero ========== -->
+<section class="hero">
+  <div class="container">
+    <span class="hero-eyebrow">Now available on Android</span>
+    <h1>Track your cycle. <span class="accent">Keep it private.</span></h1>
+    <p class="lead">A period and fertility tracker that works fully offline. No account. No data sharing.</p>
+    <a href="https://play.google.com/store/apps/details?id=com.kalenaflow.app" class="btn-primary">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M3 20.5V3.5c0-.59.34-1.11.84-1.35L13.69 12l-9.85 9.85c-.5-.25-.84-.76-.84-1.35zm10.81-7.84L7.05 19.42l8.41-4.85-1.65-1.91zm3.71-2.13L15.04 9.5l-1.65 1.91 1.43.83 2.7-1.71zM6.05 4.06l9.36 5.4-1.43.83L7.05 4.06z"/>
+      </svg>
+      Get it on Google Play
+    </a>
+    <p class="hero-meta">iOS coming soon — <a href="#waitlist">join the waitlist</a></p>
+  </div>
+</section>
 
-  <!-- HERO SECTION -->
-  <section class="hero-gradient pt-32 pb-24 md:pt-44 md:pb-32 overflow-hidden">
-    <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center reveal">
-
-      <div class="inline-flex items-center gap-2 bg-white border border-rose-coral/20 rounded-full px-4 py-1.5 mb-8 shadow-sm">
-        <span class="w-2 h-2 rounded-full bg-rose-coral animate-pulse"></span>
-        <span class="font-roboto text-xs font-medium text-midnight/70 tracking-wide">
-          Now available on Android &nbsp;·&nbsp; Early Access
+<!-- ========== Pillars ========== -->
+<section class="pillars">
+  <div class="container pillars-grid">
+    <div class="pillar">
+      <h3>
+        <span class="pillar-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="11" width="18" height="11" rx="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
         </span>
-      </div>
-
-      <h1 class="font-manrope font-extrabold text-6xl sm:text-7xl lg:text-8xl text-midnight leading-none tracking-tight mb-7">
-        Know your<br />
-        <span style="background: linear-gradient(135deg, #FF6B8A, #FF9F80); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-          flow.
-        </span>
-      </h1>
-
-      <p class="font-roboto text-xl sm:text-2xl text-midnight/60 leading-relaxed max-w-2xl mx-auto mb-10">
-        The period tracker that stays on your phone.<br class="hidden sm:block" />
-        No cloud. No subscription. No data sharing. Ever.
-      </p>
-
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
-        <a href="https://play.google.com/store/apps/details?id=com.kalenaflow.app"
-           class="btn-primary inline-flex items-center gap-3 font-manrope font-bold text-white text-base px-9 py-4 rounded-full">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M3.18 1.28C2.47 1.68 2 2.44 2 3.32v17.36c0 .88.47 1.64 1.18 2.04l.1.06 9.72-9.72v-.23L3.28 3.22l-.1.06z"/>
-            <path d="M16.09 16.12 13 13.01l3.09-3.11 3.46 1.97c.99.56.99 1.47 0 2.03l-3.46 1.97-.1.06z" opacity=".9"/>
-            <path d="M16.19 16.06 13.09 13 3.18 22.94c.32.34.79.38 1.34.09l11.67-6.97z" opacity=".8"/>
-            <path d="M3.18 1.06 13.09 11 16.19 7.94 4.52 .97C3.97.68 3.5.72 3.18 1.06z" opacity=".7"/>
-          </svg>
-          Get Early Access on Android
-        </a>
-        <p class="font-roboto text-sm text-midnight/40 font-light">iOS coming soon</p>
-      </div>
-
-      <div class="flex flex-wrap justify-center gap-3">
-        <div class="flex items-center gap-2.5 rounded-2xl px-5 py-3 shadow-sm" style="background: #FFE8EF; border: 1.5px solid rgba(255,107,138,0.2);">
-          <div class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style="background: #FF6B8A;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 2L4 6v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V6l-8-4z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-              <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <span class="font-manrope text-sm font-bold text-midnight">No cloud storage</span>
-        </div>
-        <div class="flex items-center gap-2.5 rounded-2xl px-5 py-3 shadow-sm" style="background: #FFE8EF; border: 1.5px solid rgba(255,107,138,0.2);">
-          <div class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style="background: #FF9F80;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <rect x="3" y="6" width="18" height="13" rx="2" stroke="white" stroke-width="2"/>
-              <path d="M3 10h18" stroke="white" stroke-width="2"/>
-              <circle cx="7.5" cy="15" r="1.2" fill="white"/>
-            </svg>
-          </div>
-          <span class="font-manrope text-sm font-bold text-midnight">Pay once, keep forever</span>
-        </div>
-        <div class="flex items-center gap-2.5 rounded-2xl px-5 py-3 shadow-sm" style="background: #FFE8EF; border: 1.5px solid rgba(255,107,138,0.2);">
-          <div class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style="background: #FF6B8A;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <circle cx="12" cy="12" r="9" stroke="white" stroke-width="2"/>
-              <path d="M8 12l2.5 2.5L16 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <span class="font-manrope text-sm font-bold text-midnight">No ads</span>
-        </div>
-      </div>
-
+        Stays on your phone
+      </h3>
+      <p>All your data — periods, symptoms, notes — saved locally on your device. We have no servers to leak it from.</p>
     </div>
-  </section>
+    <div class="pillar">
+      <h3>
+        <span class="pillar-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8M12 6v2m0 8v2"/>
+          </svg>
+        </span>
+        Pay once, keep forever
+      </h3>
+      <p>One-time premium unlock. No recurring fees, no subscription that auto-renews, no features held hostage.</p>
+    </div>
+    <div class="pillar">
+      <h3>
+        <span class="pillar-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="18" rx="2"/>
+            <path d="M16 2v4M8 2v4M3 10h18"/>
+          </svg>
+        </span>
+        Built for any cycle
+      </h3>
+      <p>Whether your cycle is 21 days, 45 days, or doesn't follow a textbook pattern at all — Kalena adapts to you.</p>
+    </div>
+  </div>
+</section>
 
-
-  <!-- TRUST BAR -->
-  <div class="py-6 px-4" style="background: #FF6B8A;">
-    <div class="max-w-5xl mx-auto">
-      <div class="flex flex-wrap justify-center items-center gap-x-2 gap-y-3">
-        <div class="flex items-center gap-2 px-3">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 2L4 6v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V6l-8-4z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-            <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span class="font-roboto text-sm font-medium text-white tracking-wide">No servers</span>
-        </div>
-        <span class="text-white/40 hidden sm:block">·</span>
-        <div class="flex items-center gap-2 px-3">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span class="font-roboto text-sm font-medium text-white tracking-wide">GDPR compliant</span>
-        </div>
-        <span class="text-white/40 hidden sm:block">·</span>
-        <div class="flex items-center gap-2 px-3">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <polyline points="3 6 5 6 21 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M10 11v6M14 11v6" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          <span class="font-roboto text-sm font-medium text-white tracking-wide">Data deleted instantly on uninstall</span>
-        </div>
+<!-- ========== Screenshots ========== -->
+<section class="content screenshots" id="features">
+  <div class="container">
+    <p class="section-eyebrow">Features</p>
+    <h2 class="section-title">See it in action.</h2>
+    <p class="section-lead">A clean, considered interface designed to fade into the background — so you can log a day in seconds and get on with yours.</p>
+    <div class="screenshot-grid">
+      <div class="screenshot-card">
+        <img src="screenshots/screen-insights.png" alt="Insights screen showing cycle length and stats" loading="lazy" />
+        <p>Track your cycle stats</p>
+      </div>
+      <div class="screenshot-card">
+        <img src="screenshots/screen-calendar.png" alt="Calendar screen showing logged periods and predictions" loading="lazy" />
+        <p>Visual cycle calendar</p>
+      </div>
+      <div class="screenshot-card">
+        <img src="screenshots/screen-ai.png" alt="Smart predictions screen with confidence score" loading="lazy" />
+        <p>Smart predictions</p>
+      </div>
+      <div class="screenshot-card">
+        <img src="screenshots/screen-home-dark.png" alt="Home screen in dark mode" loading="lazy" />
+        <p>Light or dark mode</p>
       </div>
     </div>
   </div>
+</section>
 
+<!-- ========== Comparison ========== -->
+<section class="content">
+  <div class="container">
+    <p class="section-eyebrow">The difference</p>
+    <h2 class="section-title">What you don't get with Kalena.</h2>
+    <p class="section-lead">Most period apps are built around extracting value from you. Kalena isn't.</p>
 
-  <!-- FEATURES SECTION -->
-  <section class="py-24 md:py-32 px-5 sm:px-8 bg-soft-white">
-    <div class="max-w-6xl mx-auto">
-
-      <div class="text-center mb-16 reveal">
-        <p class="font-roboto text-sm font-medium text-rose-coral tracking-widest uppercase mb-3">Why Kalena</p>
-        <h2 class="font-manrope font-extrabold text-4xl sm:text-5xl text-midnight">Built different.</h2>
+    <div class="comparison-wrap">
+      <div class="comparison-row comparison-header">
+        <div></div>
+        <div>Most period apps</div>
+        <div class="kalena-col">Kalena</div>
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-
-        <div class="feature-card reveal bg-white rounded-3xl p-8 md:p-9 shadow-sm border border-midnight/5" style="transition-delay: 0.05s;">
-          <div class="w-14 h-14 rounded-2xl mb-7 flex items-center justify-center"
-               style="background: linear-gradient(135deg, #FFE8EF, #FFF9F7);">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M12 2L4 6v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V6l-8-4z" fill="#FF6B8A" opacity="0.15"/>
-              <path d="M12 2L4 6v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V6l-8-4z" stroke="#FF6B8A" stroke-width="1.8" stroke-linejoin="round"/>
-              <path d="M9 12l2 2 4-4" stroke="#FF6B8A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h3 class="font-manrope font-bold text-xl text-midnight mb-3">Zero cloud storage</h3>
-          <p class="font-roboto text-base text-midnight/60 leading-relaxed">
-            Every period, symptom, and note stays on your device. We have no servers to breach, no database to hand over, no account to hack.
-          </p>
-        </div>
-
-        <div class="feature-card reveal bg-white rounded-3xl p-8 md:p-9 shadow-sm border border-midnight/5" style="transition-delay: 0.12s;">
-          <div class="w-14 h-14 rounded-2xl mb-7 flex items-center justify-center"
-               style="background: linear-gradient(135deg, #FFE8EF, #FFF9F7);">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="3" y="6" width="18" height="13" rx="2" fill="#FF9F80" opacity="0.15" stroke="#FF9F80" stroke-width="1.8"/>
-              <path d="M3 10h18" stroke="#FF9F80" stroke-width="1.8"/>
-              <circle cx="7.5" cy="15" r="1" fill="#FF9F80"/>
-              <rect x="11" y="14" width="6" height="2" rx="1" fill="#FF9F80"/>
-            </svg>
-          </div>
-          <h3 class="font-manrope font-bold text-xl text-midnight mb-3">One-time purchase</h3>
-          <p class="font-roboto text-base text-midnight/60 leading-relaxed">
-            Pay once, keep forever. No $60/year subscription. No features disappearing behind a new paywall. Yours for life.
-          </p>
-        </div>
-
-        <div class="feature-card reveal bg-white rounded-3xl p-8 md:p-9 shadow-sm border border-midnight/5" style="transition-delay: 0.19s;">
-          <div class="w-14 h-14 rounded-2xl mb-7 flex items-center justify-center"
-               style="background: linear-gradient(135deg, #FFE8EF, #FFF9F7);">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="12" cy="12" r="9" fill="#FF6B8A" opacity="0.12" stroke="#FF6B8A" stroke-width="1.8"/>
-              <path d="M8 12c0-2.21 1.79-4 4-4s4 1.79 4 4" stroke="#FF6B8A" stroke-width="1.8" stroke-linecap="round"/>
-              <path d="M12 8V6m0 12v-2" stroke="#FF6B8A" stroke-width="1.8" stroke-linecap="round"/>
-              <path d="M16 12h2M6 12h2" stroke="#FF6B8A" stroke-width="1.8" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3 class="font-manrope font-bold text-xl text-midnight mb-3">Works for your cycle</h3>
-          <p class="font-roboto text-base text-midnight/60 leading-relaxed">
-            Whether your cycle is 21 days or 45, Kalena adapts to you — not a textbook 28-day average.
-          </p>
-        </div>
-
+      <div class="comparison-row">
+        <div class="label">Where your data lives</div>
+        <div class="other">Their servers</div>
+        <div class="kalena">Your phone, only</div>
+      </div>
+      <div class="comparison-row">
+        <div class="label">Pricing model</div>
+        <div class="other">Subscription, often €60+/year</div>
+        <div class="kalena">One-time unlock</div>
+      </div>
+      <div class="comparison-row">
+        <div class="label">Account required</div>
+        <div class="other">Yes — email, sometimes more</div>
+        <div class="kalena">No account, no email</div>
+      </div>
+      <div class="comparison-row">
+        <div class="label">Tracking &amp; analytics</div>
+        <div class="other">Multiple third-party SDKs</div>
+        <div class="kalena">None</div>
+      </div>
+      <div class="comparison-row">
+        <div class="label">When you uninstall</div>
+        <div class="other">Data may persist on their servers</div>
+        <div class="kalena">Deleted instantly</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
+<!-- ========== Privacy ========== -->
+<section class="content privacy-section">
+  <div class="container">
+    <p class="section-eyebrow">Privacy by architecture</p>
+    <h2 class="section-title">We have no servers.</h2>
+    <p class="privacy-quote">Law enforcement subpoenas to Kalena would return nothing. There is nothing to return.</p>
+    <p class="section-lead">Most period apps say they protect your privacy. We're built differently — we physically cannot see your data because it never reaches us.</p>
 
-  <!-- SCREENSHOTS SHOWCASE -->
-  <section class="py-24 md:py-32 px-5 sm:px-8" style="background: linear-gradient(160deg, #FFF9F7 0%, #FFE8EF 50%, #FFF9F7 100%);">
-    <div class="max-w-6xl mx-auto">
-
-      <div class="text-center mb-14 reveal">
-        <p class="font-roboto text-sm font-medium text-rose-coral tracking-widest uppercase mb-3">Features</p>
-        <h2 class="font-manrope font-extrabold text-4xl sm:text-5xl text-midnight">See it in action.</h2>
-      </div>
-
-      <div class="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory md:overflow-visible md:pb-0 md:grid md:grid-cols-3 md:gap-8 -mx-5 px-5 md:mx-0 md:px-0">
-
-        <div class="flex-shrink-0 w-64 md:w-auto snap-center reveal" style="transition-delay: 0.05s;">
-          <div class="screenshot-frame">
-            <img src="screenshots/screen-insights.png" alt="Kalena Flow insights screen" class="w-full h-auto block" loading="lazy" />
-          </div>
-          <p class="font-manrope font-semibold text-sm text-midnight/70 text-center mt-4">Track your cycle stats</p>
-        </div>
-
-        <div class="flex-shrink-0 w-64 md:w-auto snap-center reveal" style="transition-delay: 0.12s;">
-          <div class="screenshot-frame" style="transform: translateY(-12px);">
-            <img src="screenshots/screen-calendar.png" alt="Kalena Flow calendar screen" class="w-full h-auto block" loading="lazy" />
-          </div>
-          <p class="font-manrope font-semibold text-sm text-midnight/70 text-center mt-1">Visual cycle calendar</p>
-        </div>
-
-        <div class="flex-shrink-0 w-64 md:w-auto snap-center reveal" style="transition-delay: 0.19s;">
-          <div class="screenshot-frame">
-            <img src="screenshots/screen-ai.png" alt="Kalena Flow AI predictions screen" class="w-full h-auto block" loading="lazy" />
-          </div>
-          <p class="font-manrope font-semibold text-sm text-midnight/70 text-center mt-4">AI-powered predictions</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- DARK MODE SECTION -->
-  <section class="bg-midnight py-24 md:py-32 px-5 sm:px-8 overflow-hidden">
-    <div class="max-w-6xl mx-auto">
-      <div class="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-
-        <div class="flex-shrink-0 flex justify-center reveal" style="transition-delay: 0.05s;">
-          <div>
-            <div class="w-64 sm:w-72">
-              <img src="screenshots/screen-home-dark.png" alt="Kalena Flow dark mode home screen" class="w-full h-auto block" loading="lazy" />
-            </div>
-          </div>
-        </div>
-
-        <div class="flex-1 text-center md:text-left reveal" style="transition-delay: 0.12s;">
-          <p class="font-roboto text-sm font-medium text-rose-coral tracking-widest uppercase mb-4">Dark Mode</p>
-          <h2 class="font-manrope font-extrabold text-4xl sm:text-5xl text-white leading-tight mb-6">
-            Light or dark,<br />your choice.
-          </h2>
-          <p class="font-roboto text-lg text-white/80 leading-relaxed max-w-md mx-auto md:mx-0">
-            Kalena follows your system theme automatically. Looks great day or night — no extra settings, no hunting through menus.
-          </p>
-          <ul class="mt-8 space-y-3">
-            <li class="flex items-center gap-3 justify-center md:justify-start">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style="background: rgba(255,107,138,0.2);">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#FF6B8A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              <span class="font-roboto text-base text-white/80">Follows system theme automatically</span>
-            </li>
-            <li class="flex items-center gap-3 justify-center md:justify-start">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style="background: rgba(255,107,138,0.2);">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#FF6B8A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              <span class="font-roboto text-base text-white/80">Full-colour calendar in both modes</span>
-            </li>
-            <li class="flex items-center gap-3 justify-center md:justify-start">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style="background: rgba(255,107,138,0.2);">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#FF6B8A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              <span class="font-roboto text-base text-white/80">Easy on your eyes at night</span>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- PRIVACY SECTION -->
-  <section class="privacy-gradient py-24 md:py-32 px-5 sm:px-8">
-    <div class="max-w-4xl mx-auto text-center reveal">
-
-      <div class="w-16 h-16 bg-white/20 rounded-2xl mx-auto flex items-center justify-center mb-8">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M12 2L4 6v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V6l-8-4z" fill="white" opacity="0.25"/>
-          <path d="M12 2L4 6v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V6l-8-4z" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
-          <path d="M9 12l2 2 4-4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <ul class="privacy-list">
+      <li>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF9F80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"/>
         </svg>
-      </div>
-
-      <h2 class="font-manrope font-extrabold text-4xl sm:text-5xl md:text-6xl text-white mb-7 leading-tight">
-        We have no servers.
-      </h2>
-
-      <p class="font-roboto text-lg sm:text-xl text-white/75 leading-relaxed max-w-2xl mx-auto mb-12">
-        Most period apps say they protect your privacy. We're built differently — we physically cannot see your data because it never reaches us. Law enforcement subpoenas to Kalena would return nothing. There is nothing to return.
-      </p>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto text-left">
-        <div class="flex items-start gap-3 bg-white/10 rounded-2xl px-5 py-4">
-          <span class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <span class="font-roboto text-sm text-white/85 leading-relaxed">No account or email required</span>
-        </div>
-        <div class="flex items-start gap-3 bg-white/10 rounded-2xl px-5 py-4">
-          <span class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <span class="font-roboto text-sm text-white/85 leading-relaxed">Data deleted instantly when you uninstall</span>
-        </div>
-        <div class="flex items-start gap-3 bg-white/10 rounded-2xl px-5 py-4">
-          <span class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <span class="font-roboto text-sm text-white/85 leading-relaxed">No 30-day retention policies</span>
-        </div>
-        <div class="flex items-start gap-3 bg-white/10 rounded-2xl px-5 py-4">
-          <span class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <span class="font-roboto text-sm text-white/85 leading-relaxed">No third-party analytics or advertising SDKs</span>
-        </div>
-      </div>
-
-      <div class="mt-10">
-        <a href="/privacy-policy.html"
-           class="font-roboto text-sm text-white/60 underline underline-offset-4 hover:text-white transition-colors duration-200">
-          Read our full privacy policy →
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- DOWNLOAD CTA SECTION -->
-  <section class="bg-soft-white py-24 md:py-32 px-5 sm:px-8">
-    <div class="max-w-3xl mx-auto text-center reveal">
-
-      <div class="w-20 h-20 rounded-full mx-auto mb-10 flex items-center justify-center"
-           style="background: linear-gradient(135deg, #FFE8EF, #FFF9F7); box-shadow: 0 0 0 8px #FFE8EF80, 0 0 0 16px #FFE8EF40;">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" fill="#FF6B8A" opacity="0.12"/>
-          <path d="M12 8v8m0 0l-3-3m3 3l3-3" stroke="#FF6B8A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <span>No account or email required</span>
+      </li>
+      <li>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF9F80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"/>
         </svg>
-      </div>
+        <span>Data deleted instantly when you uninstall</span>
+      </li>
+      <li>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF9F80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <span>No 30-day retention policies</span>
+      </li>
+      <li>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF9F80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <span>No third-party analytics or advertising SDKs</span>
+      </li>
+    </ul>
 
-      <h2 class="font-manrope font-extrabold text-4xl sm:text-5xl text-midnight mb-5 leading-tight">
-        Ready to know your flow?
-      </h2>
-      <p class="font-roboto text-lg text-midnight/55 mb-10">
-        Free to download. One-time premium unlock. No subscription.
-      </p>
+    <a href="/privacy-policy.html" class="read-more">
+      Read our full privacy policy
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="5" y1="12" x2="19" y2="12"/>
+        <polyline points="12 5 19 12 12 19"/>
+      </svg>
+    </a>
+  </div>
+</section>
 
-      <div class="flex flex-col items-center gap-4">
-        <a href="https://play.google.com/store/apps/details?id=com.kalenaflow.app"
-           class="btn-primary inline-flex items-center gap-4 font-manrope font-bold text-white text-lg px-10 py-5 rounded-full">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M3.18 1.28C2.47 1.68 2 2.44 2 3.32v17.36c0 .88.47 1.64 1.18 2.04l.1.06 9.72-9.72v-.23L3.28 3.22l-.1.06z"/>
-            <path d="M16.09 16.12 13 13.01l3.09-3.11 3.46 1.97c.99.56.99 1.47 0 2.03l-3.46 1.97-.1.06z" opacity=".9"/>
-            <path d="M16.19 16.06 13.09 13 3.18 22.94c.32.34.79.38 1.34.09l11.67-6.97z" opacity=".8"/>
-            <path d="M3.18 1.06 13.09 11 16.19 7.94 4.52 .97C3.97.68 3.5.72 3.18 1.06z" opacity=".7"/>
-          </svg>
-          Get it on Google Play
-        </a>
-        <p class="font-roboto text-sm text-midnight/40">iOS App Store coming soon</p>
-      </div>
+<!-- ========== Waitlist ========== -->
+<section class="content waitlist" id="waitlist">
+  <div class="container">
+    <p class="section-eyebrow">iOS</p>
+    <h2 class="section-title">Coming to iPhone soon.</h2>
+    <p class="section-lead">Pop your email below and we'll let you know the moment Kalena is live on the App Store. No spam, no marketing list — just one email when we launch.</p>
 
-      <p class="font-roboto text-xs text-midnight/35 mt-8">
-        No account. No email. Just download and start tracking.
-      </p>
-
+    <div class="brevo-wrap">
+      <iframe
+        src="https://ae8222f3.sibforms.com/serve/MUIFAI7YKJm272DMdI5oBWssUgR2PELwMzR3C-x_4w4-3PfNGn2LCwYLinnbu1DN9WQ7PiITQIF9dlI1lH5rUaLSIS-GiYFrUCVLp2fRUlCva688v_d8Uf05pW3kNFOZoQYSH-uLQdwIYJaWImHeBjXaP4EELT6SPB9bcmqGNmk_PaJD3LrKvT5nRwWOA5edXfReecLq7o0qYS24fA=="
+        scrolling="auto"
+        allowfullscreen
+        title="iOS waitlist signup">
+      </iframe>
     </div>
-  </section>
+  </div>
+</section>
 
+<!-- ========== Final CTA ========== -->
+<section class="final-cta">
+  <div class="container">
+    <h2>Ready when you are.</h2>
+    <p>Free to download. One-time premium unlock. No subscription, ever.</p>
+    <a href="https://play.google.com/store/apps/details?id=com.kalenaflow.app" class="btn-primary">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M3 20.5V3.5c0-.59.34-1.11.84-1.35L13.69 12l-9.85 9.85c-.5-.25-.84-.76-.84-1.35zm10.81-7.84L7.05 19.42l8.41-4.85-1.65-1.91zm3.71-2.13L15.04 9.5l-1.65 1.91 1.43.83 2.7-1.71zM6.05 4.06l9.36 5.4-1.43.83L7.05 4.06z"/>
+      </svg>
+      Get it on Google Play
+    </a>
+    <p class="ios-note">iPhone user? <a href="#waitlist">Join the iOS waitlist</a></p>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="bg-midnight py-10 px-5 sm:px-8">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
-        <span class="font-manrope font-extrabold text-xl tracking-widest text-rose-coral">kalena</span>
-        <span class="hidden sm:block text-white/20">·</span>
-        <span class="font-roboto text-xs text-white/65">© 2026 Kalena Flow Ltd. All rights reserved.</span>
-      </div>
-      <div class="flex items-center gap-6">
-        <a href="/privacy-policy.html"
-           class="font-roboto text-xs text-white/65 hover:text-white/90 transition-colors duration-200">
-          Privacy Policy
-        </a>
-      </div>
-      <div class="font-roboto text-xs text-white/65">
-        Made with ❤️
-      </div>
+<!-- ========== Footer ========== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-logo">kalena</span>
+      <ul class="footer-links">
+        <li><a href="/support.html">Support</a></li>
+        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="mailto:hello@kalenaflow.com">hello@kalenaflow.com</a></li>
+      </ul>
     </div>
-  </footer>
-
-
-  <!-- JAVASCRIPT -->
-  <script>
-    const nav = document.getElementById('main-nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 16);
-    }, { passive: true });
-
-    const revealEls = document.querySelectorAll('.reveal');
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-      revealEls.forEach(el => observer.observe(el));
-    } else {
-      revealEls.forEach(el => el.classList.add('visible'));
-    }
-  </script>
+    <div class="footer-bottom">
+      © 2026 Kalena Flow Ltd. Made in Ireland.
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
