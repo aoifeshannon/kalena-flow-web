@@ -7,16 +7,16 @@
 <meta name="description" content="Kalena's privacy policy. Local-first by design — your health data is stored only on your device and never transmitted." />
 <meta name="theme-color" content="#FF6B8A" />
 
+<!-- Favicons -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="manifest" href="/site.webmanifest" />
 
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Roboto:wght@400;500;600&amp;display=swap" rel="stylesheet" />
 
 <style>
   :root {
@@ -54,26 +54,35 @@
   a { color: var(--rose-coral); text-decoration: none; }
   a:hover { text-decoration: underline; }
 
+  /* Narrow container for content, wide for header/footer */
   .container {
     max-width: 760px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 2rem;
+  }
+
+  .container-wide {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
   }
 
   /* ========== Header ========== */
   header {
-    padding: 24px 0;
+    padding: 1.5rem 0;
     border-bottom: 1px solid var(--border-subtle);
-    background: var(--soft-white);
+    background: rgba(255, 249, 247, 0.92);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   .header-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 24px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 2rem;
   }
 
   .logo {
@@ -85,12 +94,13 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -0.02em;
+    margin-right: auto;
   }
 
   nav ul {
     list-style: none;
     display: flex;
-    gap: 32px;
+    gap: 2rem;
     align-items: center;
   }
 
@@ -98,12 +108,13 @@
     color: var(--midnight);
     font-weight: 500;
     font-size: 15px;
+    white-space: nowrap;
   }
 
   nav a.cta-link {
     background: var(--rose-coral);
     color: var(--soft-white);
-    padding: 10px 20px;
+    padding: 10px 22px;
     border-radius: 999px;
     transition: transform 0.2s, box-shadow 0.2s;
   }
@@ -137,7 +148,7 @@
     font-size: 13px;
     font-weight: 500;
     color: var(--rose-coral);
-    background: var(--light-pink);
+    background: rgba(255, 107, 138, 0.1);
     padding: 6px 14px;
     border-radius: 999px;
     margin-bottom: 20px;
@@ -151,27 +162,6 @@
   .meta {
     color: var(--text-muted);
     font-size: 15px;
-  }
-
-  /* ========== Short version callout ========== */
-  .tldr {
-    background: var(--light-pink);
-    border-left: 3px solid var(--rose-coral);
-    padding: 28px 32px;
-    margin: 48px 0;
-    border-radius: 12px;
-  }
-
-  .tldr h2 {
-    font-size: 18px;
-    margin-bottom: 12px;
-    color: var(--rose-coral);
-  }
-
-  .tldr p {
-    font-size: 17px;
-    line-height: 1.6;
-    color: var(--midnight);
   }
 
   /* ========== Policy body ========== */
@@ -280,25 +270,22 @@
   footer {
     background: var(--midnight);
     color: rgba(255, 249, 247, 0.7);
-    padding: 32px 0;
+    padding: 48px 0 32px;
     font-size: 14px;
   }
 
   .footer-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 24px;
   }
 
   .footer-logo {
     font-family: 'Manrope', sans-serif;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 22px;
     color: var(--soft-white);
   }
 
@@ -310,6 +297,7 @@
 
   .footer-links a {
     color: rgba(255, 249, 247, 0.7);
+    transition: color 0.2s;
   }
 
   .footer-links a:hover {
@@ -317,11 +305,20 @@
     text-decoration: none;
   }
 
+  .footer-bottom {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 249, 247, 0.1);
+    font-size: 13px;
+  }
+
   /* ========== Responsive ========== */
   @media (max-width: 640px) {
-    nav ul { gap: 16px; }
+    nav ul { gap: 1.25rem; }
     nav a { font-size: 14px; }
     nav a.cta-link { padding: 8px 14px; }
+    .container { padding: 0 1.25rem; }
+    .container-wide { padding: 0 1.25rem; }
     .page-hero { padding: 48px 0 32px; }
     .policy { padding: 32px 0 64px; }
     .tldr { padding: 22px 24px; margin: 32px 0; }
@@ -333,11 +330,10 @@
 <body>
 
 <header>
-  <div class="header-inner">
+  <div class="container-wide header-inner">
     <a href="/" class="logo">kalena</a>
     <nav>
       <ul>
-        <li><a href="/support.html">Support</a></li>
         <li><a href="/privacy-policy.html">Privacy</a></li>
         <li><a href="https://play.google.com/store/apps/details?id=com.kalenaflow.app" class="cta-link">Download</a></li>
       </ul>
@@ -364,11 +360,6 @@
 <!-- ========== Policy Body ========== -->
 <section class="policy">
   <div class="container">
-
-    <div class="tldr">
-      <h2>The short version</h2>
-      <p>Everything you log in Kalena — periods, symptoms, notes — is stored only on your device. We have no servers. We cannot see your data. We never could.</p>
-    </div>
 
     <h2>1. Introduction</h2>
     <p>Kalena ("we," "our," or "us") is operated by <strong>Kalena Flow Ltd</strong>, a company registered in Ireland. We are committed to protecting your privacy through our core architecture: a "Local-First" design where your health data is stored exclusively on your device and is never transmitted to our servers or any third party.</p>
@@ -443,19 +434,20 @@
 
 <!-- ========== Footer ========== -->
 <footer>
-  <div class="footer-inner">
-    <span class="footer-logo">kalena</span>
-    <ul class="footer-links">
-      <li><a href="/">Home</a></li>
-      <li><a href="/support.html">Support</a></li>
-      <li><a href="/privacy-policy.html">Privacy Policy</a></li>
-    </ul>
-  </div>
-  <div class="footer-inner" style="margin-top: 16px; border-top: 1px solid rgba(255, 249, 247, 0.1); padding-top: 16px; font-size: 13px;">
-    <span>© 2026 Kalena Flow Ltd. Made in Ireland.</span>
+  <div class="container-wide">
+    <div class="footer-inner">
+      <span class="footer-logo">kalena</span>
+      <ul class="footer-links">
+        <li><a href="/support.html">Support</a></li>
+        <li><a href="/privacy-policy.html">Privacy</a></li>
+        <li><a href="mailto:hello@kalenaflow.com">hello@kalenaflow.com</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Kalena Flow Ltd. Made in Ireland.
+    </div>
   </div>
 </footer>
-
 
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "130ba712e21f48368e50653c2572d3f2"}'></script>

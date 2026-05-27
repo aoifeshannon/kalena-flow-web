@@ -7,16 +7,16 @@
 <meta name="description" content="Get help with Kalena. Common questions about backups, premium unlock, predictions, and getting support." />
 <meta name="theme-color" content="#FF6B8A" />
 
+<!-- Favicons -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="manifest" href="/site.webmanifest" />
 
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Roboto:wght@400;500;600&amp;display=swap" rel="stylesheet" />
 
 <style>
   :root {
@@ -54,26 +54,35 @@
   a { color: var(--rose-coral); text-decoration: none; }
   a:hover { text-decoration: underline; }
 
+  /* Narrow container for content, wide for header/footer */
   .container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 2rem;
+  }
+
+  .container-wide {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
   }
 
   /* ========== Header ========== */
   header {
-    padding: 24px 0;
+    padding: 1.5rem 0;
     border-bottom: 1px solid var(--border-subtle);
-    background: var(--soft-white);
+    background: rgba(255, 249, 247, 0.92);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   .header-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 24px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 2rem;
   }
 
   .logo {
@@ -85,12 +94,13 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -0.02em;
+    margin-right: auto;
   }
 
   nav ul {
     list-style: none;
     display: flex;
-    gap: 32px;
+    gap: 2rem;
     align-items: center;
   }
 
@@ -98,12 +108,13 @@
     color: var(--midnight);
     font-weight: 500;
     font-size: 15px;
+    white-space: nowrap;
   }
 
   nav a.cta-link {
     background: var(--rose-coral);
     color: var(--soft-white);
-    padding: 10px 20px;
+    padding: 10px 22px;
     border-radius: 999px;
     transition: transform 0.2s, box-shadow 0.2s;
   }
@@ -126,7 +137,7 @@
     font-size: 13px;
     font-weight: 500;
     color: var(--rose-coral);
-    background: var(--light-pink);
+    background: rgba(255, 107, 138, 0.1);
     padding: 6px 14px;
     border-radius: 999px;
     margin-bottom: 20px;
@@ -144,7 +155,7 @@
     margin: 0 auto 32px;
   }
 
-  .contact-card {
+  .contact-inline {
     display: inline-flex;
     align-items: center;
     gap: 16px;
@@ -155,9 +166,9 @@
     font-size: 15px;
   }
 
-  .contact-card strong { font-family: 'Manrope', sans-serif; }
+  .contact-inline strong { font-family: 'Manrope', sans-serif; }
 
-  .contact-card a {
+  .contact-inline a {
     color: var(--midnight);
     font-weight: 600;
     text-decoration: underline;
@@ -300,26 +311,22 @@
   footer {
     background: var(--midnight);
     color: rgba(255, 249, 247, 0.7);
-    padding: 32px 0;
+    padding: 48px 0 32px;
     font-size: 14px;
-    border-top: 1px solid rgba(255, 249, 247, 0.1);
   }
 
   .footer-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 24px;
   }
 
   .footer-logo {
     font-family: 'Manrope', sans-serif;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 22px;
     color: var(--soft-white);
   }
 
@@ -331,6 +338,7 @@
 
   .footer-links a {
     color: rgba(255, 249, 247, 0.7);
+    transition: color 0.2s;
   }
 
   .footer-links a:hover {
@@ -338,27 +346,35 @@
     text-decoration: none;
   }
 
+  .footer-bottom {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 249, 247, 0.1);
+    font-size: 13px;
+  }
+
   /* ========== Responsive ========== */
   @media (max-width: 640px) {
-    nav ul { gap: 16px; }
+    nav ul { gap: 1.25rem; }
     nav a { font-size: 14px; }
     nav a.cta-link { padding: 8px 14px; }
+    .container { padding: 0 1.25rem; }
+    .container-wide { padding: 0 1.25rem; }
     .page-hero { padding: 48px 0 32px; }
     .faq { padding: 48px 0; }
     details.faq-item summary { padding: 16px 18px; font-size: 15px; }
     .faq-body { padding: 0 18px 20px; }
-    .contact-card { flex-direction: column; gap: 6px; padding: 14px 20px; text-align: center; }
+    .contact-inline { flex-direction: column; gap: 6px; padding: 14px 20px; text-align: center; }
   }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="header-inner">
+  <div class="container-wide header-inner">
     <a href="/" class="logo">kalena</a>
     <nav>
       <ul>
-        <li><a href="/support.html">Support</a></li>
         <li><a href="/privacy-policy.html">Privacy</a></li>
         <li><a href="https://play.google.com/store/apps/details?id=com.kalenaflow.app" class="cta-link">Download</a></li>
       </ul>
@@ -372,7 +388,7 @@
     <span class="page-eyebrow">Support</span>
     <h1>Need a hand with Kalena?</h1>
     <p>Most questions are answered below. If yours isn't, we're a real person on the other end of the email — usually replying within a day or two.</p>
-    <div class="contact-card">
+    <div class="contact-inline">
       <strong>Contact:</strong>
       <a href="mailto:hello@kalenaflow.com">hello@kalenaflow.com</a>
     </div>
@@ -550,19 +566,20 @@
 
 <!-- ========== Footer ========== -->
 <footer>
-  <div class="footer-inner">
-    <span class="footer-logo">kalena</span>
-    <ul class="footer-links">
-      <li><a href="/">Home</a></li>
-      <li><a href="/support.html">Support</a></li>
-      <li><a href="/privacy-policy.html">Privacy Policy</a></li>
-    </ul>
-  </div>
-  <div class="footer-inner" style="margin-top: 16px; border-top: 1px solid rgba(255, 249, 247, 0.1); padding-top: 16px; font-size: 13px;">
-    <span>© 2026 Kalena Flow Ltd. Made in Ireland.</span>
+  <div class="container-wide">
+    <div class="footer-inner">
+      <span class="footer-logo">kalena</span>
+      <ul class="footer-links">
+        <li><a href="/support.html">Support</a></li>
+        <li><a href="/privacy-policy.html">Privacy</a></li>
+        <li><a href="mailto:hello@kalenaflow.com">hello@kalenaflow.com</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Kalena Flow Ltd. Made in Ireland.
+    </div>
   </div>
 </footer>
-
 
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "130ba712e21f48368e50653c2572d3f2"}'></script>
