@@ -12,7 +12,7 @@
 <meta property="og:description" content="Track your cycle. Keep it private. Works fully offline. Pay once. No subscription." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://kalenaflow.com/" />
-<meta property="og:image" content="https://kalenaflow.com/screenshots/screen-insights.png" />
+<meta property="og:image" content="https://kalenaflow.com/screenshots/ios-predictions.png" />
 
 <!-- Favicons -->
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -230,6 +230,37 @@
 
   .btn-primary svg { width: 20px; height: 20px; }
 
+  .cta-row {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .cta-row .btn-primary {
+    flex: 0 1 auto;
+    justify-content: center;
+    min-width: 210px;
+  }
+
+  @media (max-width: 540px) {
+    .cta-row {
+      display: flex;
+      width: 100%;
+      max-width: 340px;
+      margin-left: auto;
+      margin-right: auto;
+      gap: 10px;
+    }
+    .cta-row .btn-primary {
+      flex: 1 1 100%;
+      min-width: 0;
+      padding: 13px 20px;
+      font-size: 15px;
+      gap: 8px;
+    }
+  }
+
   .hero-meta {
     margin-top: 20px;
     font-size: 14px;
@@ -340,19 +371,19 @@
   }
 
   .screenshot-left {
-    width: 210px;
-    transform: translateY(40px) rotate(-2.5deg);
+    width: 240px;
+    transform: translateY(40px) rotate(-1.5deg);
   }
 
   .screenshot-center {
-    width: 255px;
+    width: 290px;
     position: relative;
     z-index: 2;
   }
 
   .screenshot-right {
-    width: 210px;
-    transform: translateY(40px) rotate(2.5deg);
+    width: 240px;
+    transform: translateY(40px) rotate(1.5deg);
   }
 
   /* ========== Comparison cards ========== */
@@ -742,7 +773,7 @@
     <nav>
       <ul>
         <li><a href="/privacy-policy.html">Privacy</a></li>
-        <li><a href="https://play.google.com/store/apps/details?id=com.kalenaflow.app" class="cta-link">Download</a></li>
+        <li><a href="#download" class="cta-link">Download</a></li>
       </ul>
     </nav>
   </div>
@@ -751,16 +782,23 @@
 <!-- ========== Hero ========== -->
 <section class="hero">
   <div class="container">
-    <span class="hero-eyebrow">Now available on Android</span>
     <h1>Track your cycle. <br><span class="accent">Keep it private.</span></h1>
     <p class="lead">A period and fertility tracker that works fully offline. No account. No data sharing.</p>
-    <a href="https://play.google.com/store/apps/details?id=com.kalenaflow.app" class="btn-primary">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M3 20.5V3.5c0-.59.34-1.11.84-1.35L13.69 12l-9.85 9.85c-.5-.25-.84-.76-.84-1.35zm10.81-7.84L7.05 19.42l8.41-4.85-1.65-1.91zm3.71-2.13L15.04 9.5l-1.65 1.91 1.43.83 2.7-1.71zM6.05 4.06l9.36 5.4-1.43.83L7.05 4.06z"/>
-      </svg>
-      Get it on Google Play
-    </a>
-    <p class="hero-meta">iOS coming soon — <a href="#waitlist">join the waitlist</a></p>
+    <div class="cta-row">
+      <a href="https://apps.apple.com/app/id6762474857" class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+        </svg>
+        Download on the App Store
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.kalenaflow.app" class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M3 20.5V3.5c0-.59.34-1.11.84-1.35L13.69 12l-9.85 9.85c-.5-.25-.84-.76-.84-1.35zm10.81-7.84L7.05 19.42l8.41-4.85-1.65-1.91zm3.71-2.13L15.04 9.5l-1.65 1.91 1.43.83 2.7-1.71zM6.05 4.06l9.36 5.4-1.43.83L7.05 4.06z"/>
+        </svg>
+        Get it on Google Play
+      </a>
+    </div>
+    <p class="hero-meta">Free to download. No account, no subscription.</p>
   </div>
 </section>
 
@@ -814,15 +852,15 @@
     <p class="section-lead fade-up">A clean, considered interface designed to fade into the background — so you can log a day in seconds and get on with yours.</p>
     <div class="screenshot-showcase fade-up">
       <div class="screenshot-phone screenshot-left">
-        <img src="screenshots/screen-insights.png" alt="Insights screen showing cycle length and stats" loading="lazy" />
-        <p>Track your cycle stats</p>
+        <img src="screenshots/ios-home.png" alt="Home screen with a greeting, current cycle phase, and next period countdown" loading="lazy" />
+        <p>Your cycle at a glance</p>
       </div>
       <div class="screenshot-phone screenshot-center">
-        <img src="screenshots/screen-calendar.png" alt="Calendar screen showing logged periods and predictions" loading="lazy" />
+        <img src="screenshots/ios-calendar.png" alt="Calendar screen showing logged periods, predictions, and fertile days" loading="lazy" />
         <p>Visual cycle calendar</p>
       </div>
       <div class="screenshot-phone screenshot-right">
-        <img src="screenshots/screen-ai.png" alt="Smart predictions screen with confidence score" loading="lazy" />
+        <img src="screenshots/ios-predictions.png" alt="Insights screen with cycle stats and a smart prediction confidence score" loading="lazy" />
         <p>Smart predictions</p>
       </div>
     </div>
@@ -952,105 +990,25 @@
   </div>
 </section>
 
-<!-- ========== Waitlist ========== -->
-<section class="content waitlist" id="waitlist">
-  <div class="container">
-    <p class="section-eyebrow fade-up">iOS</p>
-    <h2 class="section-title fade-up">Coming to iPhone soon.</h2>
-    <p class="section-lead fade-up">Pop your email below and we'll let you know the moment Kalena is live on the App Store. No spam, no marketing list — just one email when we launch.</p>
-
-    <div class="waitlist-form-wrap fade-up">
-      <form class="waitlist-form" id="waitlist-form" novalidate>
-        <input
-          type="email"
-          name="email"
-          id="waitlist-email"
-          placeholder="your@email.com"
-          required
-          autocomplete="email"
-          aria-label="Email address"
-        />
-        <button type="submit" id="waitlist-submit">Notify me</button>
-      </form>
-      <p class="waitlist-message" id="waitlist-message" role="status" aria-live="polite"></p>
-    </div>
-  </div>
-</section>
-
-<script>
-  (function() {
-    const WAITLIST_ENDPOINT = 'https://kalena-waitlist.aoifecarrigan.workers.dev';
-
-    const form = document.getElementById('waitlist-form');
-    const emailInput = document.getElementById('waitlist-email');
-    const submitBtn = document.getElementById('waitlist-submit');
-    const message = document.getElementById('waitlist-message');
-
-    function setMessage(text, type) {
-      message.textContent = text;
-      message.className = 'waitlist-message' + (type ? ' ' + type : '');
-    }
-
-    function isValidEmail(email) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const email = emailInput.value.trim();
-
-      if (!isValidEmail(email)) {
-        setMessage('Please enter a valid email address.', 'error');
-        emailInput.focus();
-        return;
-      }
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Adding…';
-      setMessage('', '');
-
-      try {
-        const response = await fetch(WAITLIST_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: email })
-        });
-
-        const data = await response.json().catch(() => ({}));
-
-        if (response.ok && data.status === 'subscribed') {
-          setMessage('You\'re on the list. We\'ll be in touch.', 'success');
-          form.reset();
-        } else if (response.ok && data.status === 'already_subscribed') {
-          setMessage('You\'re already on the list — see you at launch.', 'success');
-          form.reset();
-        } else if (response.status === 400) {
-          setMessage('Please enter a valid email address.', 'error');
-        } else {
-          setMessage('Something went wrong. Please try again.', 'error');
-        }
-      } catch (err) {
-        setMessage('Connection issue. Please try again.', 'error');
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Notify me';
-      }
-    });
-  })();
-</script>
-
 <!-- ========== Final CTA ========== -->
-<section class="final-cta">
+<section class="final-cta" id="download">
   <div class="container">
     <h2 class="fade-up">Ready when you are.</h2>
     <p class="fade-up">Free to download. One-time premium unlock. No subscription, ever.</p>
-    <a href="https://play.google.com/store/apps/details?id=com.kalenaflow.app" class="btn-primary fade-up">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M3 20.5V3.5c0-.59.34-1.11.84-1.35L13.69 12l-9.85 9.85c-.5-.25-.84-.76-.84-1.35zm10.81-7.84L7.05 19.42l8.41-4.85-1.65-1.91zm3.71-2.13L15.04 9.5l-1.65 1.91 1.43.83 2.7-1.71zM6.05 4.06l9.36 5.4-1.43.83L7.05 4.06z"/>
-      </svg>
-      Get it on Google Play
-    </a>
-    <p class="ios-note">iPhone user? <a href="#waitlist">Join the iOS waitlist</a></p>
+    <div class="cta-row fade-up">
+      <a href="https://apps.apple.com/app/id6762474857" class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+        </svg>
+        Download on the App Store
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.kalenaflow.app" class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M3 20.5V3.5c0-.59.34-1.11.84-1.35L13.69 12l-9.85 9.85c-.5-.25-.84-.76-.84-1.35zm10.81-7.84L7.05 19.42l8.41-4.85-1.65-1.91zm3.71-2.13L15.04 9.5l-1.65 1.91 1.43.83 2.7-1.71zM6.05 4.06l9.36 5.4-1.43.83L7.05 4.06z"/>
+        </svg>
+        Get it on Google Play
+      </a>
+    </div>
   </div>
 </section>
 
