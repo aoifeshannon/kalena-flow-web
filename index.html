@@ -1050,6 +1050,36 @@
   })();
 </script>
 
+<!-- Download button click tracking -->
+<script>
+  (function() {
+    function trackDownload(store, location) {
+      // Cloudflare Zaraz custom event (works if Zaraz is enabled)
+      if (window.zaraz && typeof window.zaraz.track === 'function') {
+        window.zaraz.track('download_click', { store: store, location: location });
+      }
+      // Cloudflare Web Analytics beacon custom event
+      if (window.__cfBeacon && typeof window.__cfBeacon.track === 'function') {
+        window.__cfBeacon.track('download_click', { store: store, location: location });
+      }
+    }
+
+    document.querySelectorAll('a[href*="apps.apple.com"]').forEach(function(el) {
+      el.addEventListener('click', function() {
+        var loc = el.closest('#hero') ? 'hero' : 'cta';
+        trackDownload('ios', loc);
+      });
+    });
+
+    document.querySelectorAll('a[href*="play.google.com"]').forEach(function(el) {
+      el.addEventListener('click', function() {
+        var loc = el.closest('#hero') ? 'hero' : 'cta';
+        trackDownload('android', loc);
+      });
+    });
+  })();
+</script>
+
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "130ba712e21f48368e50653c2572d3f2"}'></script>
 <!-- End Cloudflare Web Analytics -->
